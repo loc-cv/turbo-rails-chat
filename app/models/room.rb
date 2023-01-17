@@ -1,5 +1,6 @@
 class Room < ApplicationRecord
   has_many :messages
+  has_many :participants, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 
