@@ -14,4 +14,6 @@
   <%= turbo_frame_tag "rooms" do %>
     <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
   <% end %>
+
+  <%= render "form", room: @room %>
 </main>
