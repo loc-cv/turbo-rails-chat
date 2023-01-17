@@ -4,8 +4,14 @@
   </h2>
 
   <h3>Users</h3>
-  <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
+  <%= turbo_stream_from "users" %>
+  <%= turbo_frame_tag "users" do %>
+    <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
+  <% end %>
 
   <h3>Rooms</h3>
-  <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
+  <%= turbo_stream_from "rooms" %>
+  <%= turbo_frame_tag "rooms" do %>
+    <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
+  <% end %>
 </main>
