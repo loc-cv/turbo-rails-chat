@@ -1,4 +1,6 @@
 class Room < ApplicationRecord
+  has_many :messages
+
   validates :name, presence: true, uniqueness: true
 
   scope :public_rooms, -> { where(is_private: false) }
