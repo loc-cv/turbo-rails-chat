@@ -1,9 +1,15 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
+web:
+  name: Web development
   is_private: false
 
-two:
-  name: MyString
+youtubers:
+  name: Youtubers
+  is_private: false
+
+rails:
+  name: Rails
+  is_private: false
+
+ruby:
+  name: Ruby
   is_private: false
