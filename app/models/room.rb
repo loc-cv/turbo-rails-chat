@@ -6,6 +6,14 @@ class Room < ApplicationRecord
 
   scope :public_rooms, -> { where(is_private: false) }
 
-  # Real time update the rooms list in the sidebar when a new room is created.
-  after_create_commit { broadcast_append_to "rooms", partial: "rooms/room_navlink" }
+  # Real time update the rooms list in the sidebar when a new PUBLIC room is created.
+  after_create_commit { broadcast_if_public }
+
+  private
+
+    def broadcast_if_public
+      return if is_private?
+
+      broadcast_append_to "rooms", partial: "rooms/room_navlink"
+    end
 end
