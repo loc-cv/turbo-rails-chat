@@ -1,4 +1,11 @@
-<div>
-  <h1 class="font-bold text-4xl">Rooms#index</h1>
-  <p>Find me in app/views/rooms/index.html.erb</p>
-</div>
+<main>
+  <h2>
+    <%= current_user.email %>
+  </h2>
+
+  <h3>Users</h3>
+  <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
+
+  <h3>Rooms</h3>
+  <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
+</main>
