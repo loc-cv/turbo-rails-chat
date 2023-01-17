@@ -1,0 +1,10 @@
+<div>
+  <% unless message.room.is_private? %>
+    <p class="font-bold">
+      <%= message.user.email %>
+    </p>
+  <% end %>
+  <p>
+    <%= message.body %>
+  </p>
+</div>
