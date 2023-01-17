@@ -7,9 +7,9 @@
 
     <h3>Users</h3>
     <%= turbo_stream_from "users" %>
-    <%= turbo_frame_tag "users" do %>
+    <div id="users">
       <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
-    <% end %>
+    </div>
 
     <h3>Rooms</h3>
     <%= turbo_stream_from "rooms" %>
@@ -17,7 +17,7 @@
       <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
     </div>
 
-    <%= render "form", room: @room %>
+    <%= render "rooms/form", room: @room %>
   </div>
 
   <%# Chat room %>
@@ -25,7 +25,7 @@
   <div>
     <% if @current_room %>
       <p>
-        <%= @current_room.name %>
+        <%= @user&.email || @current_room.name %>
       </p>
 
       <%= turbo_frame_tag "messages" do %>
