@@ -1,19 +1,42 @@
-<main>
-  <h2>
-    <%= current_user.email %>
-  </h2>
+<main class="flex">
+  <%# Sidebar %>
+  <div>
+    <h2>
+      <%= current_user.email %>
+    </h2>
 
-  <h3>Users</h3>
-  <%= turbo_stream_from "users" %>
-  <%= turbo_frame_tag "users" do %>
-    <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
-  <% end %>
+    <h3>Users</h3>
+    <%= turbo_stream_from "users" %>
+    <%= turbo_frame_tag "users" do %>
+      <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
+    <% end %>
 
-  <h3>Rooms</h3>
-  <%= turbo_stream_from "rooms" %>
-  <%= turbo_frame_tag "rooms" do %>
-    <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
-  <% end %>
+    <h3>Rooms</h3>
+    <%= turbo_stream_from "rooms" %>
+    <div id="rooms">
+      <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
+    </div>
 
-  <%= render "form", room: @room %>
+    <%= render "form", room: @room %>
+  </div>
+
+  <%# Chat room %>
+  <%= turbo_stream_from @current_room %>
+  <div>
+    <% if @current_room %>
+      <p>
+        <%= @current_room.name %>
+      </p>
+
+      <%= turbo_frame_tag "messages" do %>
+        <%= render @messages %>
+      <% end %>
+
+      <%= render "messages/form", room: @current_room, message: @message %>
+    <% else %>
+      <p>
+        Let's start chatting!
+      </p>
+    <% end %>
+  </div>
 </main>
