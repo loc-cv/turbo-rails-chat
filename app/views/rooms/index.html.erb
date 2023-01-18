@@ -35,7 +35,7 @@
           <%= @user&.email || "#" + @current_room.name %>
         </p>
 
-        <div id="messages" class="p-4 flex flex-col gap-2 overflow-y-auto scrollbar">
+        <div id="messages" data-controller="messages" class="p-4 flex flex-col gap-2 overflow-y-auto scrollbar">
           <%= render @messages %>
         </div>
 
