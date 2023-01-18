@@ -13,3 +13,27 @@ rails:
 ruby:
   name: Ruby
   is_private: false
+
+tech:
+  name: Tech
+  is_private: false
+
+general:
+  name: General
+  is_private: false
+
+math:
+  name: Math
+  is_private: false
+
+ai:
+  name: AI
+  is_private: false
+
+boys:
+  name: Boys
+  is_private: false
+
+girls:
+  name: Girls
+  is_private: false

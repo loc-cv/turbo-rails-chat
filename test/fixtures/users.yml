@@ -9,3 +9,31 @@ michael:
 lochandsome:
   email: lochandsome@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+superman:
+  email: superman@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+batman:
+  email: batman@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+thor:
+  email: thor@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+thanos:
+  email: thanos@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+spiderman:
+  email: spiderman@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+groot:
+  email: groot@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+wintersoldier:
+  email: wintersoldier@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
