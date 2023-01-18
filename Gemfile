@@ -76,3 +76,4 @@ end
 
 # Additional gems
 gem "devise", "~> 4.8", ">= 4.8.1"
+gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "main"
