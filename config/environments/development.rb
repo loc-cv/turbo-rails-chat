@@ -1,5 +1,11 @@
 require "active_support/core_ext/integer/time"
 
+# Some configurations to make sure images work
+Rails.application.config.action_controller.default_url_options = {
+  host: "localhost",
+  port: 3000
+}
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
