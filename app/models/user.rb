@@ -14,6 +14,16 @@ class User < ApplicationRecord
 
   after_commit :add_default_avatar, on: %i[create update]
 
+  # Avatar thumbnail, used when creating or updating user
+  def avatar_thumbnail
+    avatar.variant(resize_to_limit: [150, 150]).processed
+  end
+
+  # Chat avatar, used in chat bubbles
+  def chat_avatar
+    avatar.variant(resize_to_limit: [25, 25]).processed
+  end
+
   private
 
     def add_default_avatar
