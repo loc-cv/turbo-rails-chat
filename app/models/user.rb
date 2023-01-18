@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :messages
+  has_one_attached :avatar
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -10,4 +11,19 @@ class User < ApplicationRecord
 
   # Real time update the users list in the sidebar when a new user signs up.
   after_create_commit { broadcast_append_to "users", partial: "users/user_navlink" }
+
+  after_commit :add_default_avatar, on: %i[create update]
+
+  private
+
+    def add_default_avatar
+      return if avatar.attached?
+
+      avatar.attach(
+        io: File.open(Rails.root.join("app", "assets",
+                                      "images", "default_avatar.png")),
+        filename: "default_avatar.png",
+        content_type: "image/png"
+      )
+    end
 end
