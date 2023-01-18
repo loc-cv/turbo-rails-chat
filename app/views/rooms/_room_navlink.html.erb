@@ -1,3 +1,6 @@
-<p>
-  <%= link_to room.name, room %>
-</p>
+<%= link_to room do %>
+  <p class="bg-blue-200 hover:bg-blue-300 text-gray-800 py-1 px-5 rounded font-semibold uppercase">
+    <span class="font-bold text-gray-600 uppercase">#</span>
+    <span><%= room.name %></span>
+  </p>
+<% end %>

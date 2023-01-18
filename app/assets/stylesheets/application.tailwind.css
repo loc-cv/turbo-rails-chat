@@ -11,3 +11,16 @@
 }
 
 */
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 rounded hover:bg-gray-50;
+  }
+}

@@ -1,42 +1,54 @@
-<main class="flex">
+<main class="flex h-screen">
   <%# Sidebar %>
-  <div>
-    <h2>
+  <div class="flex flex-col h-screen min-w-[25%] py-10 px-5 bg-gray-700 text-gray-100">
+    <h2 class="font-bold uppercase text-xl mb-10 grow-0">
       <%= current_user.email %>
     </h2>
 
-    <h3>Users</h3>
-    <%= turbo_stream_from "users" %>
-    <div id="users">
-      <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
-    </div>
+    <div class="flex flex-col h-full grow">
+      <div class="basis-0 grow">
+        <h3 class="font-semibold uppercase text-lg mb-2">Users</h3>
+        <%= turbo_stream_from "users" %>
+        <div id="users" class="h-60 flex flex-col gap-2 overflow-y-auto overflow-x-hidden scrollbar">
+          <%= render partial: "users/user_navlink", collection: @other_users, as: :user %>
+        </div>
+      </div>
 
-    <h3>Rooms</h3>
-    <%= turbo_stream_from "rooms" %>
-    <div id="rooms">
-      <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
-    </div>
 
-    <%= render "rooms/form", room: @room %>
+      <div class="basis-0 grow">
+        <h3 class="font-semibold uppercase text-lg mb-2">Rooms</h3>
+        <%= render "rooms/form", room: @room %>
+        <%= turbo_stream_from "rooms" %>
+        <div id="rooms" class="h-60 flex flex-col gap-2 mt-4 overflow-y-auto scrollbar overflow-x-hidden">
+          <%= render partial: "rooms/room_navlink", collection: @public_rooms, as: :room %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <%# Chat room %>
   <%= turbo_stream_from @current_room %>
-  <div>
+  <div class="h-full w-full">
     <% if @current_room %>
-      <p>
-        <%= @user&.email || @current_room.name %>
-      </p>
+      <div class="h-full flex flex-col justify-between">
+        <p class="bg-gray-900 text-gray-100 py-5 px-10 uppercase font-semibold text-xl">
+          <%= @user&.email || "#" + @current_room.name %>
+        </p>
 
-      <%= turbo_frame_tag "messages" do %>
-        <%= render @messages %>
-      <% end %>
+        <div id="messages" class="p-4 flex flex-col gap-2 overflow-y-auto scrollbar">
+          <%= render @messages %>
+        </div>
 
-      <%= render "messages/form", room: @current_room, message: @message %>
+        <div class="mt-auto p-2 border-t-gray-300 border-t-2 bg-gray-100">
+          <%= render "messages/form", room: @current_room, message: @message %>
+        </div>
+      </div>
     <% else %>
-      <p>
-        Let's start chatting!
-      </p>
+      <div class="flex justify-center items-center h-full">
+        <p class="font-bold uppercase text-5xl text-indigo-600 hover:text-indigo-700">
+          Let's start chatting!
+        </p>
+      </div>
     <% end %>
   </div>
 </main>

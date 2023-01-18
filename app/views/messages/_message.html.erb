@@ -1,10 +1,12 @@
-<div>
-  <% unless message.room.is_private? %>
-    <p class="font-bold">
-      <%= message.user.email %>
+<div class="self-start flex flex-col max-w-[40%] rounded bg-gray-300 message-<%= message.user.id %>">
+  <div class="break-words p-4">
+    <% unless message.room.is_private? %>
+      <p class="text-sm font-semibold text-gray-600 mb-2">
+        <%= message.user.email %>
+      </p>
+    <% end %>
+    <p class="text-gray-800 font-medium">
+      <%= message.body %>
     </p>
-  <% end %>
-  <p>
-    <%= message.body %>
-  </p>
+  </div>
 </div>

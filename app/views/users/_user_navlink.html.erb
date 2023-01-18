@@ -1,3 +1,5 @@
-<p>
-  <%= link_to user.email, user %>
-</p>
+<%= link_to user do %>
+  <p class="bg-gray-500 hover:bg-gray-600 text-gray-100 py-3 px-5 rounded font-semibold hover:font-bold">
+    <%= user.email %>
+  </p>
+<% end %>

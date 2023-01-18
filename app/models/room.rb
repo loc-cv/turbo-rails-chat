@@ -22,6 +22,6 @@ class Room < ApplicationRecord
     def broadcast_if_public
       return if is_private?
 
-      broadcast_append_to "rooms", partial: "rooms/room_navlink"
+      broadcast_prepend_to "rooms", partial: "rooms/room_navlink"
     end
 end

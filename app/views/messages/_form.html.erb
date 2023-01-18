@@ -1,4 +1,4 @@
-<%= form_with(model: [room, message], class: "flex") do |f| %>
-  <%= f.text_field :body, autocomplete: "off" %>
-  <%= f.submit "Send" %>
+<%= form_with(model: [room, message], class: "flex gap-1") do |f| %>
+  <%= f.text_field :body, autocomplete: "off", class: "w-full rounded border-gray-400" %>
+  <%= f.submit "Send", class: "px-4 bg-sky-300 font-medium rounded cursor-pointer" %>
 <% end %>

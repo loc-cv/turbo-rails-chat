@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html class="h-full">
+  <head class="h-full">
     <title>RailsTurboChat</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -9,9 +9,16 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style type="text/css" media="screen">
+      <%= ".message-#{current_user&.id}" %> {
+        align-self: flex-end;
+        background-color: #bfdbfe;
+      }
+    </style>
   </head>
 
-  <body>
+  <body class="h-full">
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
