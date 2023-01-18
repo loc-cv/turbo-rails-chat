@@ -1,4 +1,6 @@
-<%= form_with(model: [room, message], class: "flex gap-1") do |f| %>
+<%= form_with(model: [room, message],
+              data: { controller: "forms", action: "turbo:submit-end->forms#clear"},
+              class: "flex gap-1") do |f| %>
   <%= f.text_field :body, autocomplete: "off", class: "w-full rounded border-gray-400" %>
   <%= f.submit "Send", class: "px-4 bg-sky-300 font-medium rounded cursor-pointer" %>
 <% end %>
