@@ -15,6 +15,12 @@
         align-self: flex-end;
         background-color: #bfdbfe;
       }
+      <%= ".avatar-#{current_user&.id}" %> {
+        order: 9999;
+      }
+      <%= ".time-#{current_user&.id}" %> {
+        align-self: flex-end;
+      }
     </style>
   </head>
 

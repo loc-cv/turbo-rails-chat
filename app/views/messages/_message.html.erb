@@ -1,12 +1,24 @@
-<div class="self-start flex flex-col max-w-[40%] rounded bg-gray-300 message-<%= message.user.id %>">
-  <div class="break-words p-4">
-    <% unless message.room.is_private? %>
-      <p class="text-sm font-semibold text-gray-600 mb-2">
-        <%= message.user.email %>
-      </p>
-    <% end %>
-    <p class="text-gray-800 font-medium">
-      <%= message.body %>
-    </p>
+<div class="flex flex-col gap-1">
+  <div class="self-start p-4 max-w-[40%] rounded bg-gray-300 message-<%= message.user.id %>">
+    <div class="flex gap-4">
+      <div class="avatar-<%= message.user.id %> min-w-[25px]">
+        <%= image_tag message.user.chat_avatar, class: "rounded-full" %>
+      </div>
+
+      <div class="break-words">
+        <% unless message.room.is_private? %>
+          <p class="text-sm font-semibold text-gray-600 mb-2">
+            <%= message.user.email %>
+          </p>
+        <% end %>
+        <p class="text-gray-800 font-medium">
+          <%= message.body %>
+        </p>
+      </div>
+    </div>
   </div>
+
+  <p class="text-xs text-gray-400 self-start time-<%= message.user.id %>">
+    <%= time_ago_in_words(message.created_at).capitalize %> ago
+  </p>
 </div>
