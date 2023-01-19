@@ -24,6 +24,10 @@ class User < ApplicationRecord
     avatar.variant(resize_to_limit: [25, 25]).processed
   end
 
+  def is_participant_of?(room)
+    room.participants.where(user: self).exists?
+  end
+
   private
 
     def add_default_avatar

@@ -1,5 +1,16 @@
+<% if @current_room && user.is_participant_of?(@current_room) %>
+  <% active = "bg-blue-100 hover:bg-blue-200 text-gray-800" %>
+<% else %>
+  <% active = "bg-gray-500 hover:bg-gray-600 text-gray-100" %>
+<% end %>
+
 <%= link_to user do %>
-  <p class="bg-gray-500 hover:bg-gray-600 text-gray-100 py-3 px-5 rounded font-semibold hover:font-bold">
-    <%= user.email %>
-  </p>
+  <div class="<%= active %> flex items-center gap-3 py-3 px-5 rounded font-medium">
+    <div>
+      <%= image_tag(user.chat_avatar, class: "rounded-full") %>
+    </div>
+    <p>
+      <%= user.email %>
+    </p>
+  </div>
 <% end %>

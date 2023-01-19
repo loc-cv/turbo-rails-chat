@@ -1,6 +1,12 @@
+<% if @current_room&.id == room.id %>
+  <% active = "bg-blue-100 hover:bg-blue-200 text-gray-800" %>
+<% else %>
+  <% active = "bg-gray-500 hover:bg-gray-600 text-gray-100" %>
+<% end %>
+
 <%= link_to room do %>
-  <p class="bg-blue-200 hover:bg-blue-300 text-gray-800 py-1 px-5 rounded font-semibold uppercase">
-    <span class="font-bold text-gray-600 uppercase">#</span>
+  <p class="<%= active %> py-1 px-5 rounded font-semibold uppercase">
+    <span class="font-bold uppercase">#</span>
     <span><%= room.name %></span>
   </p>
 <% end %>
