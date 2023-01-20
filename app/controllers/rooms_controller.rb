@@ -2,6 +2,7 @@ class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_public_rooms, only: %i[index show]
   before_action :set_other_users, only: %i[index show]
+  before_action :update_current_user_status
 
   def index
     @room = Room.new
@@ -30,6 +31,10 @@ class RoomsController < ApplicationController
     end
 
     def set_other_users
-      @other_users = User.all_except(current_user)
+      @other_users = User.all_except(current_user).order(created_at: :asc)
+    end
+
+    def update_current_user_status
+      current_user.update(status: User.statuses[:online])
     end
 end

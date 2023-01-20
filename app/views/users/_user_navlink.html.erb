@@ -4,10 +4,12 @@
   <% active = "bg-gray-500 hover:bg-gray-600 text-gray-100" %>
 <% end %>
 
+<%= turbo_stream_from "user_status" %>
 <%= link_to user do %>
   <div class="<%= active %> flex items-center gap-3 py-3 px-5 rounded font-medium">
-    <div>
-      <%= image_tag(user.chat_avatar, class: "rounded-full") %>
+    <div class="icon-container">
+      <%= image_tag(user.chat_avatar, class: "rounded-full min-w-full") %>
+      <%= render "users/status", user: user %>
     </div>
     <p>
       <%= user.email %>

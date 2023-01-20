@@ -25,6 +25,6 @@ class UsersController < ApplicationController
     end
 
     def set_other_users
-      @other_users = User.all_except(current_user)
+      @other_users = User.all_except(current_user).order(created_at: :asc)
     end
 end

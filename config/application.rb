@@ -11,6 +11,11 @@ module RailsTurboChat
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    # Set all users' statuses to 'offline' when the server restarts.
+    config.after_initialize do
+      User.update_all(status: User.statuses[:offline])
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
