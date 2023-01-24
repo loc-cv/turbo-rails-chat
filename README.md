@@ -1,24 +1,39 @@
-# README
+# Turbo Rails Chat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## A realtime chat messaging app built with Ruby on Rails 7
 
-Things you may want to cover:
+### Description
 
-* Ruby version
+A chat messaging app built with Rails 7, Hotwire stack (Turbo and Stimulus)
+and Tailwind CSS.
 
-* System dependencies
+### Overview
 
-* Configuration
+- Messaging with realtime updates using Turbo Stream and Action Cable.
+- Public and private chat.
+- Realtime user statuses (online, offline and away).
 
-* Database creation
+### Screen Shots
 
-* Database initialization
+![Screenshot](./public/screenshot.png "Chat room")
 
-* How to run the test suite
+### Installation and Setup Instructions
 
-* Services (job queues, cache servers, search engines, etc.)
+Make sure you have [Redis](https://redis.com/) installed and running in your machine.
 
-* Deployment instructions
+You might need to install [libvips](https://github.com/libvips/libvips) for
+images processing (for [Active Storage](https://guides.rubyonrails.org/active_storage_overview.html))
 
-* ...
+Clone the repository to your local machine:
+
+- Navigate to your cloned directory.
+- Run <code>bin/rails db:setup</code>.
+- <code>bin/dev</code> to run the app.
+
+### Todo
+
+- [ ] Restyle Devise views.
+- [ ] Implement message file attachments with preview.
+- [ ] Implement infinite messages scroll.
+- [ ] Unread chatroom notifications.
+- [ ] Implement authorization.
